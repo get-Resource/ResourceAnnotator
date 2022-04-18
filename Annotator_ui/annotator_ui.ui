@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AnnotatiorUI</class>
+ <widget class="QMainWindow" name="AnnotatiorUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>924</width>
+    <height>781</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Annotatior UI Interfaces</string>
+  </property>
+  <property name="whatsThis">
+   <string>asda</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="central_widget">
+   <layout class="QVBoxLayout" name="menubar_drawing_layout" stretch="0,15">
+    <item>
+     <widget class="QWidget" name="menubar" native="true">
+      <layout class="QHBoxLayout" name="menubar_layout">
+       <item>
+        <widget class="QWidget" name="jobs_bar" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QToolButton" name="jobs">
+            <property name="locale">
+             <locale language="Chinese" country="China"/>
+            </property>
+            <property name="text">
+             <string>jobs</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="jobs_list"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="upload">
+            <property name="text">
+             <string>Upload</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="auto_upload">
+            <property name="text">
+             <string>Auto Upload</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="export_jobs">
+            <property name="text">
+             <string>Export jobs</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QWidget" name="images_search" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1">
+          <property name="spacing">
+           <number>9</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QComboBox" name="images_list"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QComboBox" name="shape_select"/>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget" native="true"/>
+       </item>
+       <item>
+        <widget class="QWidget" name="toolbar" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QToolButton" name="Crosshair">
+            <property name="text">
+             <string extracomment="Turn crosshair on / off">Crosshair</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="settings">
+         <property name="text">
+          <string extracomment="settings">Settings</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="Drawing" native="true"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_Turn_crosshair_on_off">
+   <property name="text">
+    <string>Turn crosshair on / off</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
