@@ -15,6 +15,7 @@ class Ui_AnnotatiorUI(object):
     def setupUi(self, AnnotatiorUI):
         AnnotatiorUI.setObjectName("AnnotatiorUI")
         AnnotatiorUI.resize(924, 781)
+        AnnotatiorUI.setStyleSheet("")
         self.central_widget = QtWidgets.QWidget(AnnotatiorUI)
         self.central_widget.setObjectName("central_widget")
         self.menubar_drawing_layout = QtWidgets.QVBoxLayout(self.central_widget)
@@ -49,13 +50,13 @@ class Ui_AnnotatiorUI(object):
         self.images_search = QtWidgets.QWidget(self.menubar)
         self.images_search.setObjectName("images_search")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.images_search)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setSpacing(9)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.images_list = QtWidgets.QComboBox(self.images_search)
         self.images_list.setObjectName("images_list")
         self.horizontalLayout_2.addWidget(self.images_list)
-        self.search = QtWidgets.QLineEdit(self.images_search)
-        self.search.setObjectName("search")
-        self.horizontalLayout_2.addWidget(self.search)
+        self.horizontalLayout_2.setStretch(0, 1)
         self.menubar_layout.addWidget(self.images_search)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.menubar_layout.addItem(spacerItem1)
@@ -79,6 +80,11 @@ class Ui_AnnotatiorUI(object):
         self.menubar_drawing_layout.addWidget(self.menubar)
         self.Drawing = QtWidgets.QWidget(self.central_widget)
         self.Drawing.setObjectName("Drawing")
+        self.gridLayout = QtWidgets.QGridLayout(self.Drawing)
+        self.gridLayout.setObjectName("gridLayout")
+        self.show_images = show_image(self.Drawing)
+        self.show_images.setObjectName("show_images")
+        self.gridLayout.addWidget(self.show_images, 0, 0, 1, 1)
         self.menubar_drawing_layout.addWidget(self.Drawing)
         self.menubar_drawing_layout.setStretch(1, 15)
         AnnotatiorUI.setCentralWidget(self.central_widget)
@@ -94,6 +100,7 @@ class Ui_AnnotatiorUI(object):
     def retranslateUi(self, AnnotatiorUI):
         _translate = QtCore.QCoreApplication.translate
         AnnotatiorUI.setWindowTitle(_translate("AnnotatiorUI", "Annotatior UI Interfaces"))
+        AnnotatiorUI.setWhatsThis(_translate("AnnotatiorUI", "asda"))
         self.jobs.setText(_translate("AnnotatiorUI", "jobs"))
         self.upload.setText(_translate("AnnotatiorUI", "Upload"))
         self.auto_upload.setText(_translate("AnnotatiorUI", "Auto Upload"))
@@ -101,3 +108,6 @@ class Ui_AnnotatiorUI(object):
         self.Crosshair.setText(_translate("AnnotatiorUI", "Crosshair"))
         self.settings.setText(_translate("AnnotatiorUI", "Settings"))
         self.action_Turn_crosshair_on_off.setText(_translate("AnnotatiorUI", "Turn crosshair on / off"))
+
+
+from show_images import show_image

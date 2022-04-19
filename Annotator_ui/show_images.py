@@ -4,9 +4,9 @@ from PyQt5.Qt import QPixmap, QPoint, Qt, QPainter
 from PyQt5.QtWidgets import QWidget, QApplication
 
 
-class ImageBox(QWidget):
-    def __init__(self):
-        super(ImageBox, self).__init__()
+class show_image(QWidget):
+    def __init__(self, parent):
+        super(show_image, self).__init__(parent)
         self.img = None
         self.scaled_img = None
         self.point = QPoint(0, 0)
@@ -14,9 +14,6 @@ class ImageBox(QWidget):
         self.end_pos = None
         self.left_click = False
         self.scale = 1
-
-    def init_ui(self):
-        self.setWindowTitle("ImageBox")
 
     def set_image(self, img_path):
         """
@@ -100,7 +97,7 @@ class ImageBox(QWidget):
 if __name__ == '__main__':
     img_name = r"C:\Users\Mayzh\Pictures\1.PNG"
     app = QApplication(sys.argv)
-    box = ImageBox()
+    box = show_image()
     box.show()
     box.set_image(img_name)
     app.exec_()

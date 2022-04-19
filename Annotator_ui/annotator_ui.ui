@@ -144,7 +144,13 @@
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="Drawing" native="true"/>
+     <widget class="QWidget" name="Drawing" native="true">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="show_image" name="show_images" native="true"/>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -155,6 +161,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>show_image</class>
+   <extends>QWidget</extends>
+   <header>show_images</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
