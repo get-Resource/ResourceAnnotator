@@ -1,0 +1,119 @@
+// create, update
+{
+  "version": 0,
+  "tags": [],
+  "shapes": [
+    {
+      "type": "rectangle",
+      "occluded": false,
+      "z_order": 0,
+      "rotation": 0,
+      "points": [
+        901.2120291616011,
+        703.4332928311032,
+        1408.5255164033988,
+        1397.0068043742394
+      ],
+      "id": 1,
+      "frame": 0,
+      "label_id": 1,
+      "group": 0,
+      "source": "manual",
+      "attributes": [
+        {
+          "spec_id": 1,
+          "value": ""
+        }
+      ]
+    },
+    {
+      "type": "rectangle",
+      "occluded": false,
+      "z_order": 0,
+      "rotation": 0,
+      "points": [
+        1075.21875,
+        139.751953125,
+        1408.525390625,
+        335.814453125
+      ],
+      "id": 2,
+      "frame": 0,
+      "label_id": 1,
+      "group": 0,
+      "source": "manual",
+      "attributes": [
+        {
+          "spec_id": 1,
+          "value": ""
+        }
+      ]
+    },
+    {
+      "type": "polygon",
+      "occluded": false,
+      "z_order": 0,
+      "rotation": 0,
+      "points": [
+        763.96875,
+        372.5771484375,
+        984.5388821385168,
+        362.7735115431333,
+        1001.6944106925876,
+        588.2461725394878,
+        504.2000000000007,
+        875,
+        349.8000000000011,
+        730.4000000000015,
+        327.7000000000007,
+        593.1000000000004,
+        362,
+        286.8000000000011
+      ],
+      "id": 3,
+      "frame": 0,
+      "label_id": 1,
+      "group": 0,
+      "source": "manual",
+      "attributes": [
+        {
+          "spec_id": 1,
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "tracks": []
+}
+
+// delete
+{
+    "shapes": [
+        {
+            "type": "rectangle",
+            "occluded": false,
+            "z_order": 0,
+            "points": [
+                64.44057071960196,
+                235.1098014888321,
+                249.62419354838676,
+                587.9596774193524
+            ],
+            "rotation": 0,
+            "attributes": [
+                {
+                    "spec_id": "1",
+                    "value": ""
+                }
+            ],
+            "id": 4,
+            "frame": 0,
+            "label_id": 1,
+            "group": 0,
+            "source": "manual"
+        }
+    ],
+    "tracks": [],
+    "tags": [],
+    "version": 0
+}

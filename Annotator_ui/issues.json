@@ -1,0 +1,178 @@
+// api/jobs/2/issues
+
+[
+    {
+        "id": 1,
+        "frame": 0,
+        "position": [
+            327.7000000000007,
+            593.1000000000004,
+            362,
+            286.8000000000011,
+            716.5,
+            172.39999999999964,
+            984.5388821385168,
+            362.7735115431333,
+            1001.6944106925876,
+            588.2461725394878,
+            504.2000000000007,
+            875,
+            349.8000000000011,
+            730.4000000000015,
+            327.7000000000007,
+            593.1000000000004
+        ],
+        "job": 2,
+        "owner": {
+            "url": "http://111.67.195.173:9001/api/users/1",
+            "id": 1,
+            "username": "admin",
+            "first_name": "",
+            "last_name": ""
+        },
+        "assignee": null,
+        "created_date": "2022-04-20T13:16:25.962678Z",
+        "updated_date": null,
+        "comments": [
+            {
+                "id": 1,
+                "issue": 1,
+                "owner": {
+                    "url": "http://111.67.195.173:9001/api/users/1",
+                    "id": 1,
+                    "username": "admin",
+                    "first_name": "",
+                    "last_name": ""
+                },
+                "message": "Wrong position",
+                "created_date": "2022-04-20T13:16:25.986772Z",
+                "updated_date": "2022-04-20T13:16:25.986806Z"
+            }
+        ],
+        "resolved": true
+    },
+    {
+        "id": 2,
+        "frame": 0,
+        "position": [
+            232.10682382133928,
+            873.2425558312643,
+            720.0906947890817,
+            1226.0924317617846
+        ],
+        "job": 2,
+        "owner": {
+            "url": "http://111.67.195.173:9001/api/users/1",
+            "id": 1,
+            "username": "admin",
+            "first_name": "",
+            "last_name": ""
+        },
+        "assignee": null,
+        "created_date": "2022-04-20T13:16:29.312852Z",
+        "updated_date": null,
+        "comments": [
+            {
+                "id": 2,
+                "issue": 2,
+                "owner": {
+                    "url": "http://111.67.195.173:9001/api/users/1",
+                    "id": 1,
+                    "username": "admin",
+                    "first_name": "",
+                    "last_name": ""
+                },
+                "message": "Wrong attribute",
+                "created_date": "2022-04-20T13:16:29.323678Z",
+                "updated_date": "2022-04-20T13:16:29.323713Z"
+            }
+        ],
+        "resolved": false
+    },
+    {
+        "id": 3,
+        "frame": 0,
+        "position": [
+            851.9736328125,
+            99.7138671875,
+            1280.8990234374996,
+            99.7138671875,
+            1280.8990234374996,
+            349.6619140625007,
+            851.9736328125,
+            349.6619140625007,
+            851.9736328125,
+            99.7138671875
+        ],
+        "job": 2,
+        "owner": {
+            "url": "http://111.67.195.173:9001/api/users/1",
+            "id": 1,
+            "username": "admin",
+            "first_name": "",
+            "last_name": ""
+        },
+        "assignee": null,
+        "created_date": "2022-04-20T13:21:53.878567Z",
+        "updated_date": null,
+        "comments": [
+            {
+                "id": 3,
+                "issue": 3,
+                "owner": {
+                    "url": "http://111.67.195.173:9001/api/users/1",
+                    "id": 1,
+                    "username": "admin",
+                    "first_name": "",
+                    "last_name": ""
+                },
+                "message": "231",
+                "created_date": "2022-04-20T13:21:53.890649Z",
+                "updated_date": "2022-04-20T13:21:53.890678Z"
+            }
+        ],
+        "resolved": false
+    }
+]
+// /api/issues
+{
+    "id": 0,
+    "frame": 0,
+    "position": [
+      0
+    ],
+    "job": 0,
+    "owner": {
+      "url": "string",
+      "id": 0,
+      "username": "0-1ycco.90h_76pDEkYc7j1X",
+      "first_name": "string",
+      "last_name": "string"
+    },
+    "assignee": {
+      "url": "string",
+      "id": 0,
+      "username": "BLkH5NfWbJ0.btWI6u+S.s7UZW-UK-g1pHa4lrBIBcGIu8J5IspybyYQBqqr6Flc_Ok-wmPoul",
+      "first_name": "string",
+      "last_name": "string"
+    },
+    "created_date": "2022-04-20T14:45:22.808Z",
+    "updated_date": "2022-04-20T14:45:22.808Z",
+    "comments": [
+      {
+        "id": 0,
+        "issue": 0,
+        "owner": {
+          "url": "string",
+          "id": 0,
+          "username": "y8PKcwjsoMOSBdE0tossVd@wHHLcwR.kr7UHsqGQUqn",
+          "first_name": "string",
+          "last_name": "string"
+        },
+        "message": "string",
+        "created_date": "2022-04-20T14:45:22.808Z",
+        "updated_date": "2022-04-20T14:45:22.808Z"
+      }
+    ],
+    "resolved": true
+  }

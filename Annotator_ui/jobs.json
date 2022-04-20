@@ -1,0 +1,54 @@
+// org: 
+// page: 1
+// filter: {"and":[{"==":[{"var":"assignee"},"text"]}]}
+// search: 
+// page_size: 12
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "url": "http://111.67.195.173:9001/api/jobs/2",
+      "id": 2,
+      "task_id": 4,
+      "project_id": 1,
+      "assignee": {
+        "url": "http://111.67.195.173:9001/api/users/2",
+        "id": 2,
+        "username": "text",
+        "first_name": "",
+        "last_name": ""
+      },
+      "dimension": "2d",
+      "labels": [
+        {
+          "id": 1,
+          "name": "obj",
+          "color": "#c06020",
+          "attributes": [
+            {
+              "id": 1,
+              "name": "text",
+              "mutable": false,
+              "input_type": "text",
+              "default_value": "",
+              "values": [
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "bug_tracker": "",
+      "status": "validation",
+      "stage": "acceptance",
+      "state": "in progress",
+      "mode": "annotation",
+      "start_frame": 0,
+      "stop_frame": 0,
+      "data_chunk_size": 26,
+      "data_compressed_chunk_type": "imageset"
+    }
+  ]
+}
