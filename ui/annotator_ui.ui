@@ -20,13 +20,43 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="central_widget">
-   <layout class="QVBoxLayout" name="menubar_drawing_layout" stretch="0,15">
+   <layout class="QVBoxLayout" name="menubar_drawing_layout" stretch="1,15">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
      <widget class="QWidget" name="menubar" native="true">
-      <layout class="QHBoxLayout" name="menubar_layout">
+      <layout class="QHBoxLayout" name="menubar_layout" stretch="3,2,2,3,1">
        <item>
         <widget class="QWidget" name="jobs_bar" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>9</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QToolButton" name="jobs">
             <property name="locale">
@@ -65,21 +95,8 @@
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <widget class="QWidget" name="images_search" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1">
           <property name="spacing">
            <number>9</number>
           </property>
@@ -96,33 +113,51 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QComboBox" name="images_list"/>
+           <widget class="QComboBox" name="images_list">
+            <property name="placeholderText">
+             <string/>
+            </property>
+            <property name="duplicatesEnabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="images_list_search">
+            <property name="placeholderText">
+             <string>images list search</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QComboBox" name="shape_select"/>
-       </item>
-       <item>
-        <widget class="QWidget" name="widget" native="true"/>
+        <widget class="QWidget" name="shape_list" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QComboBox" name="shape_select">
+            <property name="whatsThis">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
        <item>
         <widget class="QWidget" name="toolbar" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QToolButton" name="adaptive_images">
+            <property name="text">
+             <string extracomment="adaptive images">adaptive</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QToolButton" name="Crosshair">
             <property name="text">
@@ -158,6 +193,21 @@
   <action name="action_Turn_crosshair_on_off">
    <property name="text">
     <string>Turn crosshair on / off</string>
+   </property>
+  </action>
+  <action name="action_on_jobs">
+   <property name="text">
+    <string>on_jobs</string>
+   </property>
+  </action>
+  <action name="action_login">
+   <property name="text">
+    <string>login</string>
+   </property>
+  </action>
+  <action name="action_remember">
+   <property name="text">
+    <string>remember</string>
    </property>
   </action>
  </widget>
