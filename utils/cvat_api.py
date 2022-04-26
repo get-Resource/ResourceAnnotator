@@ -1,12 +1,9 @@
 import json
 import os
+import traceback
 
 import requests
 
-try:
-    import _pickle as pickle
-except ImportError:
-    import pickle
 basepath = os.path.abspath(os.sep.join([os.path.basename(__file__), ".."]))
 serialize_basename = os.sep.join([basepath, "hyckle"])
 os.makedirs(serialize_basename, exist_ok=True)
@@ -23,7 +20,41 @@ class cvat_service:
         }
         self.session = requests.session()
 
+    def request(self, *args, **parameter):  # 请求服务
+        url = parameter.get("url")
+        try:  # 可能出现的错误有无法连接、服务器内部错误、参数错误、
+            response = self.session.request(*args, **parameter)
+            # text = json.loads(response.text)
+
+            return response
+        except requests.exceptions.ConnectionError as e:  # 无法连接服务器错误、无法访问url错误
+            info = traceback.format_exc()
+            message = f"无法连接服务，请检查网络情况，确保能访问: {url}"
+            print(info)
+            return message
+        except json.decoder.JSONDecodeError as e:  # 返回不是json格式text，属于服务内部错误
+            info = traceback.format_exc()
+            print(info)
+        except Exception as e:  # 其他错误
+            info = traceback.format_exc()
+            print(info, response.text)
+        # {"detail": "Authentication credentials were not provided."} #没有提供身份验证
+
     # region auth 登录认证
+
+    def user_self(self):  # 主要用于验证是否登录以及连接中心端
+        url = f"{self.url}/api/users/self"
+        headers = {}
+        headers.update(self.headers)
+        auth = False
+        try:
+            result = self.request("GET", url, headers=headers)
+            text = json.loads(result.text)
+        except Exception as e:
+            auth = False
+        if "username" in text.keys():
+            auth = True
+        return auth
 
     def auth_login(self, username, password, email=None):
         url = f"{self.url}/api/auth/login"
@@ -36,23 +67,11 @@ class cvat_service:
             body.update({"email": email})
         headers = {}
         headers.update(self.headers)
-        if list(self.session.cookies) == []:
-            body = json.dumps(body)
-            try:
-                response = self.session.request(
-                    "POST", url, headers=self.headers, data=body)
-                text = json.loads(response.text)
-                return text, self.session
-            except requests.exceptions.ConnectionError as e:
-                message = {
-                    "error code": 400,
-                    "message": f"无法连接服务，请检查网络情况，确保能访问: {url}",
-                }
-                return message
-            except Exception as e:  # 服务器错误、无法访问url错误
-                print(e)
-        # print(self.session.cookies)
-        # text = json.loads(response.text)
+        body = json.dumps(body)
+        result = self.request(
+            "POST", url, headers=self.headers, data=body)
+        text = json.loads(result.text)
+        return text, self.session
 
     def load_auth(self, sessio):
         if sessio:  # 本地存在则加载本地
@@ -144,15 +163,11 @@ class cvat_service:
         if sort:
             body.update({"sort": sort})
 
-        try:
-            response = self.session.request(
-                "GET", url, headers=self.headers, data=body)
-            text = response.text
-            text = json.loads(text)
-        except requests.exceptions.ConnectionError as e:
-            text = e
-        except json.decoder.JSONDecodeError as e:
-            text = f"{e} : {text}"
+        result = self.request(
+            "GET", url, headers=self.headers, data=body)
+        text = json.loads(result.text)
+        if "detail" in text:
+            return False
         return text
 
     def get_jobs_details(self, id):
@@ -183,16 +198,8 @@ class cvat_service:
         """
         url = f"{self.url}/api/jobs/{id}"
         body = {}
-
-        try:
-            response = self.session.request(
-                "GET", url, headers=self.headers, data=body)
-            text = json.loads(response.text)
-        except requests.exceptions.ConnectionError as e:
-            text = e
-        except json.decoder.JSONDecodeError as e:
-            text = f"{e} : {text}"
-        print(text)
+        result = self.request("GET", url, headers=self.headers, data=body)
+        text = json.loads(result.text)
         return text
 
     def get_jobs_annotations(self, id, filter=None, org=None, org_id=None, page=None, page_size=None, search=None,
@@ -321,16 +328,13 @@ class cvat_service:
         body.update({"quality": quality})
         body.update({"type": type})
 
-        try:
-            response = self.session.request(
-                "GET", url, headers=headers, params=body)
-            images = response.content
-        except requests.exceptions.ConnectionError as e:
-            images = e
+        result = self.request(
+            "GET", url, headers=headers, params=body)
+        content = result.content
 
         # with open(f"./{type}.jpg", 'wb') as f:
-        #     f.write(images)
-        return images
+        #     f.write(content)
+        return content
 
     def get_jobs_issues(self, id, filter=None, org=None, org_id=None, page=None, page_size=None, search=None,
                         sort=None):
@@ -469,13 +473,19 @@ class cvat_service:
 
 if __name__ == "__main__":
     api = cvat_service()
+    # api = cvat_service("http://https/api/jobs")
     body = {
         "username": "tester",
         # "email": "tester@test.com",
-        "password": "Tester123"
+        "password": "Tester1231"
     }
+    # body = {
+    #     "username": "tester",
+    #     # "email": "tester@test.com",
+    #     "password": "Tester1231"
+    # }
     api.auth_login(**body)
-    api.get_jobs_list()
-    # data = api.data(3, 1, "frame")
-    # data = api.tasks_data_meta(6)
-    data = api.get_jobs_details(8)
+    # api.get_jobs_list()
+    # # data = api.data(3, 1, "frame")
+    # # data = api.tasks_data_meta(6)
+    # data = api.get_jobs_details(8)

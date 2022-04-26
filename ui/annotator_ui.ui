@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>924</width>
+    <width>1060</width>
     <height>781</height>
    </rect>
   </property>
@@ -62,25 +62,32 @@
             <property name="locale">
              <locale language="Chinese" country="China"/>
             </property>
-            <property name="text">
-             <string>jobs</string>
-            </property>
+               <property name="text">
+                   <string>jobs</string>
+               </property>
            </widget>
           </item>
-          <item>
-           <widget class="QComboBox" name="jobs_list"/>
-          </item>
-          <item>
-           <widget class="QToolButton" name="upload">
-            <property name="text">
-             <string>Upload</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="auto_upload">
-            <property name="text">
-             <string>Auto Upload</string>
+             <item>
+                 <widget class="QComboBox" name="jobs_list"/>
+             </item>
+             <item>
+                 <widget class="QToolButton" name="pull_jobs">
+                     <property name="text">
+                         <string>pull jobs</string>
+                     </property>
+                 </widget>
+             </item>
+             <item>
+                 <widget class="QToolButton" name="upload">
+                     <property name="text">
+                         <string>Upload</string>
+                     </property>
+                 </widget>
+             </item>
+             <item>
+                 <widget class="QCheckBox" name="auto_upload">
+                     <property name="text">
+                         <string>Auto Upload</string>
             </property>
            </widget>
           </item>
@@ -200,16 +207,31 @@
     <string>on_jobs</string>
    </property>
   </action>
-  <action name="action_login">
-   <property name="text">
-    <string>login</string>
-   </property>
-  </action>
-  <action name="action_remember">
-   <property name="text">
-    <string>remember</string>
-   </property>
-  </action>
+     <action name="action_login">
+         <property name="text">
+             <string>login</string>
+         </property>
+     </action>
+     <action name="action_remember">
+         <property name="text">
+             <string>remember</string>
+         </property>
+     </action>
+     <action name="action_pull_jobs">
+         <property name="text">
+             <string>pull jobs</string>
+         </property>
+     </action>
+     <action name="action_updata_jobs_list">
+         <property name="text">
+             <string>updata_jobs_list</string>
+         </property>
+     </action>
+     <action name="action_download_images">
+         <property name="text">
+             <string>download_images</string>
+         </property>
+     </action>
  </widget>
  <customwidgets>
   <customwidget>

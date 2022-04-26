@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtWidgets
 class Ui_AnnotatiorUI(object):
     def setupUi(self, AnnotatiorUI):
         AnnotatiorUI.setObjectName("AnnotatiorUI")
-        AnnotatiorUI.resize(924, 781)
+        AnnotatiorUI.resize(1060, 781)
         AnnotatiorUI.setStyleSheet("")
         self.central_widget = QtWidgets.QWidget(AnnotatiorUI)
         self.central_widget.setObjectName("central_widget")
@@ -39,6 +39,9 @@ class Ui_AnnotatiorUI(object):
         self.jobs_list = QtWidgets.QComboBox(self.jobs_bar)
         self.jobs_list.setObjectName("jobs_list")
         self.horizontalLayout_4.addWidget(self.jobs_list)
+        self.pull_jobs = QtWidgets.QToolButton(self.jobs_bar)
+        self.pull_jobs.setObjectName("pull_jobs")
+        self.horizontalLayout_4.addWidget(self.pull_jobs)
         self.upload = QtWidgets.QToolButton(self.jobs_bar)
         self.upload.setObjectName("upload")
         self.horizontalLayout_4.addWidget(self.upload)
@@ -118,6 +121,12 @@ class Ui_AnnotatiorUI(object):
         self.action_login.setObjectName("action_login")
         self.action_remember = QtWidgets.QAction(AnnotatiorUI)
         self.action_remember.setObjectName("action_remember")
+        self.action_pull_jobs = QtWidgets.QAction(AnnotatiorUI)
+        self.action_pull_jobs.setObjectName("action_pull_jobs")
+        self.action_updata_jobs_list = QtWidgets.QAction(AnnotatiorUI)
+        self.action_updata_jobs_list.setObjectName("action_updata_jobs_list")
+        self.action_download_images = QtWidgets.QAction(AnnotatiorUI)
+        self.action_download_images.setObjectName("action_download_images")
 
         self.retranslateUi(AnnotatiorUI)
         QtCore.QMetaObject.connectSlotsByName(AnnotatiorUI)
@@ -127,6 +136,7 @@ class Ui_AnnotatiorUI(object):
         AnnotatiorUI.setWindowTitle(_translate("AnnotatiorUI", "Annotatior UI Interfaces"))
         AnnotatiorUI.setWhatsThis(_translate("AnnotatiorUI", "asda"))
         self.jobs.setText(_translate("AnnotatiorUI", "jobs"))
+        self.pull_jobs.setText(_translate("AnnotatiorUI", "pull jobs"))
         self.upload.setText(_translate("AnnotatiorUI", "Upload"))
         self.auto_upload.setText(_translate("AnnotatiorUI", "Auto Upload"))
         self.export_jobs.setText(_translate("AnnotatiorUI", "Export jobs"))
@@ -138,4 +148,7 @@ class Ui_AnnotatiorUI(object):
         self.action_on_jobs.setText(_translate("AnnotatiorUI", "on_jobs"))
         self.action_login.setText(_translate("AnnotatiorUI", "login"))
         self.action_remember.setText(_translate("AnnotatiorUI", "remember"))
+        self.action_pull_jobs.setText(_translate("AnnotatiorUI", "pull jobs"))
+        self.action_updata_jobs_list.setText(_translate("AnnotatiorUI", "updata_jobs_list"))
+        self.action_download_images.setText(_translate("AnnotatiorUI", "download_images"))
 from show_images import show_image

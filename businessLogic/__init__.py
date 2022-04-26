@@ -43,6 +43,10 @@ if os.path.exists(image_annotation_pickle_path):
     image_annotation_pickle = pickle.load(open(image_annotation_pickle_path, 'rb'))
 else:
     image_annotation_pickle = {}
+if "images" not in jobs_pickle:
+    image_annotation_pickle["images"] = {}
+if "annotation" not in jobs_pickle:
+    image_annotation_pickle["annotation"] = {}
 pickle.dump(image_annotation_pickle, open(image_annotation_pickle_path, 'wb'))
 # 配置设置
 settings_pickle_path = os.sep.join([serialize_basename, "settings.pickle"])
@@ -51,5 +55,6 @@ if os.path.exists(settings_pickle_path):
 else:
     settings_pickle = {}
 if "cvat_url" not in settings_pickle:
-    settings_pickle["cvat_url"] = "http://111.67.195.173:9001"
+    settings_pickle["cvat_url"] = "http://119.91.35.165:8001"
+settings_pickle["cvat_url"] = "http://119.91.35.165:8001"
 pickle.dump(settings_pickle, open(settings_pickle_path, 'wb'))

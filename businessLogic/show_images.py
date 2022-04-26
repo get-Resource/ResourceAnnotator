@@ -25,6 +25,11 @@ class show_image(QWidget):
         # img.setScaledSize(QSize(self.size().width(), self.size().height()))
         # img = img.read()
         self.img = QPixmap(img_path)
+        print(img_path)
+        # if os.path.exists(str(img_path)):
+        #     self.img = QPixmap(img_path)
+        # else:
+        #     self.img = QPixmap.loadFromData(img_path,"JPG")
         self.scaled_img = self.img
 
     def paintEvent(self, e):
