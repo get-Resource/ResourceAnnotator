@@ -12,12 +12,13 @@ class thread(QThread):  # 定义一个工作线程，后面会调用和重写
         self.function = function
         self.f_args = f_args
         self.f_parameter = f_parameter
-        print(f'{function} Start...')
+
 
     def run(self):  # 线程启动后会自动执行,这里是逻辑实现的代码
-        print(1111)
+        print(f'{self.function} Start... ,args : {self.f_args}; parameter : {self.f_parameter} ; ')
         try:
-            return_dict = self.function(*self.f_args, **self.f_parameter)
+            self.function(*self.f_args, **self.f_parameter)
+            # return_dict =
         except Exception as e:
             info = traceback.format_exc()
             print(info)
