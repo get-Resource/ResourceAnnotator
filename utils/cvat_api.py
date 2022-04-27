@@ -25,16 +25,15 @@ class cvat_service:
         try:  # 可能出现的错误有无法连接、服务器内部错误、参数错误、
             response = self.session.request(*args, **parameter)
             # text = json.loads(response.text)
-
             return response
         except requests.exceptions.ConnectionError as e:  # 无法连接服务器错误、无法访问url错误
             info = traceback.format_exc()
-            message = f"无法连接服务，请检查网络情况，确保能访问: {url}"
-            print(info)
+            message = {"message":f"无法连接服务，请检查网络情况，确保能访问: {url}"}
             return message
         except json.decoder.JSONDecodeError as e:  # 返回不是json格式text，属于服务内部错误
             info = traceback.format_exc()
             print(info)
+            return message
         except Exception as e:  # 其他错误
             info = traceback.format_exc()
             print(info, response.text)
@@ -51,10 +50,12 @@ class cvat_service:
             result = self.request("GET", url, headers=headers)
             text = json.loads(result.text)
         except Exception as e:
+            text = {}
             auth = False
         if "username" in text.keys():
             auth = True
-        return auth
+            print(text)
+        return auth,text
 
     def auth_login(self, username, password, email=None):
         url = f"{self.url}/api/auth/login"
@@ -68,9 +69,17 @@ class cvat_service:
         headers = {}
         headers.update(self.headers)
         body = json.dumps(body)
-        result = self.request(
-            "POST", url, headers=self.headers, data=body)
-        text = json.loads(result.text)
+        try:
+            self.session.cookies.clear()
+            result = self.request(
+                "POST", url, headers=self.headers, data=body)
+            text = json.loads(result.text)
+        except Exception as e:
+            if type(result) == dict:
+                text = result
+            else:
+                text = {"result":result.text}
+            print(e,text)
         return text, self.session
 
     def load_auth(self, sessio):

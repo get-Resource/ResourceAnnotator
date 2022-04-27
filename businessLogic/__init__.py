@@ -1,4 +1,5 @@
 import os
+import sys
 
 try:
     import _pickle as pickle
@@ -6,7 +7,9 @@ except ImportError:
     import pickle
 
 basepath = os.path.abspath(os.sep.join([os.path.dirname(__file__), ".."]))
+sys.path.append(basepath)
 serialize_basename = os.sep.join([basepath, "pickle"])
+import sys
 os.makedirs(serialize_basename, exist_ok=True)
 # 用户
 user_pickle_path = os.sep.join([serialize_basename, "user.pickle"])

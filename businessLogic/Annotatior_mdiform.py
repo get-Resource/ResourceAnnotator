@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import copy
+import os
 import sys
+basepath = os.path.abspath(os.sep.join([os.path.dirname(__file__), ".."]))
+sys.path.append(basepath)
 import traceback
 
 from PyQt5 import QtGui
@@ -91,16 +94,20 @@ class mdiform(QMainWindow, Ui_AnnotatiorUI):  # 不可用QMainWindow,因为QLabe
             username = user_pickle["user"]["username"]
             password = user_pickle["user"]["password"]
             if user_pickle["remember"] and username and password:  # 记住密码自动填写
-                self.auth_login_ui.passwor_dedit.setText(username)
-                self.auth_login_ui.username_dedit.setText(password)
-                self.auth_login_ui.remember_checkBox.setChecked(True)
-                if user_pickle["auth_session"]:
-                    self.cvat_service.load_auth(user_pickle["auth_session"])
-                    login_status = self.cvat_service.user_self()
-                    self.login_status = login_status
-                    if not login_status:
-                        QMessageBox.warning(self, "登录提示", "用户需要重新登录", QMessageBox.Yes,
-                                            QMessageBox.No)
+                # if user_pickle["auth_session"]:
+                self.cvat_service.load_auth(user_pickle["auth_session"])
+                login_status,user = self.cvat_service.user_self()
+                self.login_status = login_status
+                if not login_status:
+                    QMessageBox.warning(self, "登录提示", "用户需要重新登录", QMessageBox.Yes,
+                                        QMessageBox.No)
+                else:
+                    username = user["username"]
+                    # password = user["password"]
+                    self.auth_login_ui.passwor_dedit.setText(password)
+                    self.auth_login_ui.username_dedit.setText(username)
+                    self.auth_login_ui.remember_checkBox.setChecked(True)
+
 
     def pull_jobs_list_task(self, cvat_service):  # 拉取工作列表到本地
         if self.login_status:
@@ -109,6 +116,7 @@ class mdiform(QMainWindow, Ui_AnnotatiorUI):  # 不可用QMainWindow,因为QLabe
                 jobs_lines = cvat_service.get_jobs_list()
                 # jobs_pickle["jobs"] = jobs_lines
                 for index, jobs in enumerate(jobs_lines["results"]):
+                    print(jobs)
                     jobs_id = jobs["id"]
                     task_id = jobs["task_id"]
                     task_name = jobs["task_name"]
@@ -202,8 +210,8 @@ class mdiform(QMainWindow, Ui_AnnotatiorUI):  # 不可用QMainWindow,因为QLabe
 
     @pyqtSlot()
     def on_action_updata_jobs_list_triggered(self):  # 在 pull jobs界面按下updata jobs按钮 拉取所有jobs列表
-        pull_jobs_list_task = thread(self.pull_jobs_list_task, f_args=[self.cvat_service], f_parameter={})
-        pull_jobs_list_task.start()  # 函数必须要返回 dict
+        self.pull_jobs_list_task = thread(self.pull_jobs_list_task, f_args=[self.cvat_service], f_parameter={})
+        self.pull_jobs_list_task.start()  # 函数必须要返回 dict
 
     @pyqtSlot()
     def on_action_pull_jobs_triggered(self):  # pull_jobs 按下显示jobs 拉取弹窗
@@ -254,7 +262,7 @@ class mdiform(QMainWindow, Ui_AnnotatiorUI):  # 不可用QMainWindow,因为QLabe
     def on_action_login_triggered(self):  # 登录按钮按下到远程登录
         username = self.auth_login_ui.username_dedit.text()
         password = self.auth_login_ui.passwor_dedit.text()
-        if not self.login_status:
+        if not self.login_status and user_pickle["user"]["username"] == username and user_pickle["user"]["password"] == password :
             message, session = self.cvat_service.auth_login(username, password)
             if "key" in message:  # 登录成功
                 self.login_status = True
@@ -271,7 +279,9 @@ class mdiform(QMainWindow, Ui_AnnotatiorUI):  # 不可用QMainWindow,因为QLabe
                 print(username, mes)
                 QMessageBox.warning(self, "登录失败", mes, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         else:
+            print(user_pickle["user"],username,password)
             QMessageBox.warning(self, "登录提示", "用户已经登录不用重新登录", QMessageBox.Yes, QMessageBox.No)
+            self.auth_login_ui.close()
     # endregion
 
 
