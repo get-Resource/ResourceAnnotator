@@ -23,7 +23,7 @@ class cvat_service:
     def request(self, *args, **parameter):  # 请求服务
         url = parameter.get("url")
         try:  # 可能出现的错误有无法连接、服务器内部错误、参数错误、
-            response = self.session.request(*args, **parameter)
+            response = self.session.request(timeout=2, *args, **parameter)
             # text = json.loads(response.text)
             return response
         except requests.exceptions.ConnectionError as e:  # 无法连接服务器错误、无法访问url错误
@@ -32,6 +32,7 @@ class cvat_service:
             return message
         except json.decoder.JSONDecodeError as e:  # 返回不是json格式text，属于服务内部错误
             info = traceback.format_exc()
+            message = {"message": f"无法连接服务，请检查网络情况，确保能访问: {url}"}
             print(info)
             return message
         except Exception as e:  # 其他错误
