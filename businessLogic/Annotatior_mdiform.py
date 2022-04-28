@@ -32,6 +32,7 @@ class mdiform(QMainWindow, Ui_AnnotatiorUI):  # 不可用QMainWindow,因为QLabe
         url = settings_pickle["cvat_url"]
         self.cvat_service = cvat_service(url)  # cvat服务
         self.jobs_pull_ui = jobs_pull(self)  # jobs 拉取界面
+        self.settings_ui = jobs_pull(self)  # jobs 拉取界面
 
         self.current_jobs_id = None  # jobs id
         self.current_images_id = None  # images id
@@ -305,11 +306,14 @@ class mdiform(QMainWindow, Ui_AnnotatiorUI):  # 不可用QMainWindow,因为QLabe
                     jobs_frames_meta = {}
                     for frame_id in range(start_frame, stop_frame + 1):
                         jobs_frames_meta[frame_id] = task_meta["frames"][frame_id]
-
                         if jobs_id not in image_annotation_pickle["images"][jobs_id][frame_id]:
                             image_annotation_pickle["images"][jobs_id][frame_id] = None
                     # 需要校验本地和远程的差异性
                     jobs_pickle["jobs_details"][jobs_id] = jobs
+                    for lable in jobs["labels"]:
+                        lable_id = lable["id"]
+                        lable_type = lable["name"]  # 这里在服务端固定名称 [region, tag], 定义到标签是 区域注释标签还是 图片标签，图像标签可以用于分类和文本检测
+                        jobs_pickle["jobs_labels"][jobs_id][lable_id] = lable
                     image_annotation_pickle["frames_meta"][jobs_id] = jobs_frames_meta
                     if jobs_id not in image_annotation_pickle["annotation"][jobs_id]:
                         image_annotation_pickle["annotation"][jobs_id] = {}
@@ -447,11 +451,17 @@ class mdiform(QMainWindow, Ui_AnnotatiorUI):  # 不可用QMainWindow,因为QLabe
                 print(username, mes)
                 QMessageBox.warning(self, "登录失败", mes, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         else:
-            print(user_pickle["user"],username,password)
+            print(user_pickle["user"], username, password)
             QMessageBox.warning(self, "登录提示", "用户已经登录不用重新登录", QMessageBox.Yes, QMessageBox.No)
             self.auth_login_ui.close()
+
     # endregion
 
+    # region 设置界面功能
+    @pyqtSlot()
+    def on_action_on_jobs_triggered(self):  # jobs按下显示登录弹窗
+        self.auth_login_ui.show()
+    # endregion
 
 '''主函数'''
 if __name__ == "__main__":

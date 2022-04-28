@@ -151,4 +151,4 @@ class Ui_AnnotatiorUI(object):
         self.action_pull_jobs.setText(_translate("AnnotatiorUI", "pull jobs"))
         self.action_updata_jobs_list.setText(_translate("AnnotatiorUI", "updata_jobs_list"))
         self.action_download_images.setText(_translate("AnnotatiorUI", "download_images"))
-from show_images import show_image
+from businessLogic.show_images import show_image

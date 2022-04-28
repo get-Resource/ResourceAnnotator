@@ -36,6 +36,8 @@ if "current_jobs_id" not in jobs_pickle:
     jobs_pickle["current_jobs_id"] = None
 if "jobs_details" not in jobs_pickle:
     jobs_pickle["jobs_details"] = {}
+if "jobs_labels" not in jobs_pickle:
+    jobs_pickle["jobs_labels"] = {}
 pickle.dump(jobs_pickle, open(jobs_pickle_path, 'wb'))
 
 # 图像注释
